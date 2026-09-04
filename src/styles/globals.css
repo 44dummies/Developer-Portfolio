@@ -1,0 +1,83 @@
+/*
+  Unlayered rules intentionally — they outrank @layer utilities in the CSS cascade,
+  which ensures focus-visible rings always appear even when Tailwind's
+  `outline-none` / `focus:outline-none` utilities are also applied.
+*/
+
+:focus-visible {
+  outline: 2px solid #8ea2ff;
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* Screen-reader-only utility: visually hidden but accessible */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Hardware-accelerated continuous infinite marquee */
+@keyframes marquee-scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marquee-scroll 50s linear infinite;
+}
+
+/* Smoothly pause animation on hover/focus without resetting position */
+.animate-marquee-paused:hover,
+.animate-marquee-paused:focus-within {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+    transform: none;
+  }
+}
+
+/* --- Awwwards Masterpiece Ambient Background & Film Grain --- */
+.bg-grid-pattern {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Analog Film Grain Overlay */
+.film-grain {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 99;
+  opacity: 0.6;
+  mix-blend-mode: overlay;
+}
+
+/* Kinetic Masked Clip Path */
+.clip-mask {
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+
