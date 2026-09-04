@@ -80,4 +80,13 @@
   vertical-align: bottom;
 }
 
-
+/* Editorial hover accent for tech wordmarks */
+.tech-wordmark {
+  -webkit-text-stroke: 1px rgba(255,255,255,0.06);
+  color: transparent;
+  transition: color 0.5s cubic-bezier(0.16, 1, 0.3, 1), -webkit-text-stroke 0.5s;
+}
+.tech-wordmark:hover {
+  -webkit-text-stroke: 0px transparent;
+  color: rgba(244, 243, 241, 0.85);
+}
