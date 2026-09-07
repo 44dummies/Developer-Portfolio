@@ -27,7 +27,7 @@ export function CustomCursor() {
       let nextState: "none" | "hover" | "project" = "none";
       if (target.closest("[data-cursor='project']")) {
         nextState = "project";
-      } else if (target.closest("a, button, [data-cursor='hover'], input, textarea")) {
+      } else if (target.closest("a, button, [data-cursor='hover']")) {
         nextState = "hover";
       }
 
