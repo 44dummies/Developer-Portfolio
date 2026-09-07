@@ -29,8 +29,7 @@ export function Home() {
   return (
     <main className="pt-[68px]">
       {/* ---------- HERO ---------- */}
-      <section className="mx-auto max-w-[1200px] px-5 pt-20 sm:px-8 sm:pt-28">
-        {/* Eyebrow row */}
+      <section className="mx-auto max-w-[1200px] px-5 pt-24 sm:px-8 sm:pt-32">
         <motion.div
           initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -39,7 +38,7 @@ export function Home() {
         >
           <Eyebrow>{PERSON.role} · {PERSON.location}</Eyebrow>
           <span className="size-1 rounded-full bg-[#9aae85]" aria-hidden />
-          <span className="inline-flex items-center gap-2 rounded-full border border-[#9aae85]/30 bg-[#9aae85]/[0.06] px-3 py-1 font-[DM_Mono] text-[10px] uppercase tracking-[0.18em] text-[#9aae85]">
+          <span className="inline-flex items-center gap-2 font-[DM_Mono] text-[10px] uppercase tracking-[0.18em] text-[#93939c]">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
@@ -48,40 +47,22 @@ export function Home() {
           </span>
         </motion.div>
 
-        {/* Massive editorial name */}
-        <motion.div
-          initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: shouldReduceMotion ? 0 : 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-6"
-        >
-          <h1 className="font-[Space_Grotesk] text-[clamp(4.5rem,14vw,12rem)] font-bold uppercase leading-[0.85] tracking-[-0.04em] text-[#f4f3f1]">
-            Damian
-          </h1>
-        </motion.div>
+        {/* Masterpiece Kinetic Word-Split Headline */}
+        <div className="mt-7 max-w-5xl">
+          <KineticText
+            text={PERSON.tagline}
+            className="font-[Newsreader] text-[clamp(3rem,6.7vw,5.9rem)] font-medium leading-[0.96] tracking-[-0.045em] text-[#f4f3f1]"
+          />
+        </div>
 
-        {/* Italic serif subtitle — offset right */}
-        <motion.div
-          initial={{ opacity: 0, x: shouldReduceMotion ? 0 : -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: shouldReduceMotion ? 0 : 0.7, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-3 flex items-center gap-4 sm:ml-[15%]"
-        >
-          <span className="hidden h-px w-12 bg-white/20 sm:block" aria-hidden />
-          <p className="font-[Newsreader] text-[clamp(1.3rem,3.2vw,2.6rem)] italic leading-[1.1] tracking-[-0.02em] text-[#a8a8b0]">
-            builds systems that earn trust
-          </p>
-        </motion.div>
-
-        {/* Description + CTAs */}
         <motion.div
           initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: shouldReduceMotion ? 0 : 0.65, delay: shouldReduceMotion ? 0 : 0.5 }}
-          className="mt-14 grid gap-8 border-t border-white/10 pt-7 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end"
+          transition={{ duration: shouldReduceMotion ? 0 : 0.65, delay: shouldReduceMotion ? 0 : 0.4 }}
+          className="mt-12 grid gap-8 border-t border-white/10 pt-7 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end"
         >
           <p className="max-w-xl text-[15px] leading-7 text-[#a8a8b0]">
-            Through <span className="text-[#d7d7dc]">44 Dummies</span>, I build the research,
+            I&apos;m Damian. Through <span className="text-[#d7d7dc]">44 Dummies</span>, I build the research,
             software, and operational systems that turn a useful answer into something people rely on.
           </p>
           <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
@@ -102,30 +83,24 @@ export function Home() {
         </motion.div>
       </section>
 
-      {/* ---------- TECH STACK WORDMARKS ---------- */}
-      <section className="relative mt-20 border-y border-white/[0.07] sm:mt-28" aria-label="Core technology stack">
-        <div className="mx-auto max-w-[1200px] px-5 py-10 sm:px-8 sm:py-14">
-          <Eyebrow className="mb-8 text-white/30">Core Stack</Eyebrow>
-          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-            {CORE_TECH_ITEMS.map((item, i) => (
-              <span key={item.id} className="group inline-flex items-baseline gap-x-3">
-                <motion.span
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-40px" }}
-                  transition={{ duration: 0.5, delay: i * 0.06, ease: [0.16, 1, 0.3, 1] }}
-                  className="font-[Space_Grotesk] text-[clamp(1.8rem,4.5vw,3.5rem)] font-bold uppercase leading-none tracking-[-0.03em] text-[#f4f3f1]/[0.12] transition-colors duration-500 group-hover:text-[#f4f3f1]/80"
-                  style={{ color: undefined }}
-                >
-                  {item.name}
-                </motion.span>
-                {i < CORE_TECH_ITEMS.length - 1 && (
-                  <span className="font-[Space_Grotesk] text-[clamp(1.2rem,3vw,2.2rem)] font-light text-white/[0.08]" aria-hidden>/</span>
-                )}
-              </span>
-            ))}
+      {/* ---------- CORE STACK MARQUEE ---------- */}
+      <section
+        className="relative mt-20 overflow-hidden border-y border-white/[0.07] sm:mt-28"
+        aria-label="Core technology stack"
+      >
+        <div className="flex items-center py-5">
+          <div className="animate-marquee animate-marquee-paused" aria-hidden>
+            <TechIconsGroup />
+            <TechIconsGroup />
           </div>
         </div>
+
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-28 bg-gradient-to-r from-[#07070b] to-transparent" aria-hidden />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-28 bg-gradient-to-l from-[#07070b] to-transparent" aria-hidden />
+
+        <ul className="sr-only">
+          {CORE_TECH_ITEMS.map((item) => <li key={item.id}>{item.name}</li>)}
+        </ul>
       </section>
 
       {/* ---------- THESIS ---------- */}
@@ -212,9 +187,8 @@ export function Home() {
             </div>
           </div>
 
-          {/* Bento grid — first project featured large */}
           <div className="mt-12 grid gap-5 sm:grid-cols-2">
-            {filteredProjects.slice(0, 4).map((project, idx) => (
+            {filteredProjects.slice(0, 4).map((project) => (
               <motion.div
                 key={project.slug}
                 layout
@@ -222,9 +196,8 @@ export function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: shouldReduceMotion ? 0 : 0.45, ease: [0.22, 1, 0.36, 1] }}
-                className={idx === 0 ? "sm:col-span-2" : ""}
               >
-                <ProjectCard project={project} featured={idx === 0} />
+                <ProjectCard project={project} featured />
               </motion.div>
             ))}
           </div>
